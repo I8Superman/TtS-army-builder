@@ -1,0 +1,21 @@
+@import './variables.css';
+
+/* NOTE: CSS files have the .css file name but the SASS/SCSS icon/file association.
+Also, they are technically PostCSS files! I had to associate them with SCSS to be able 
+to use formatting on the files (thats why they have the SCSS icon and the SCSS langage
+mode (see bottom right of screen). Hopefulley, this should not affect the build output
+and still make use of PostCSS plugins ... */
+
+/* GLOBAL STYLESHEET: Global styles for the whole app */
+
+html {
+    background: var(--yellow);
+}
+
+p {
+    user-select: none;
+}
+
+h2 {
+    background-color: var(--red);
+}

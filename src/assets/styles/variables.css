@@ -1,0 +1,8 @@
+/* VARIABLES: All custom properties used in both global and local styles */
+
+:root {
+    --green: green;
+    --red: red;
+    --blue: blue;
+    --yellow: yellow;
+}
