@@ -1,10 +1,11 @@
 .card {
-    border: 2px solid var(--green);
-    
-    & h2 {
-        background-color: var(--yellow);
-    }
+  border: 2px solid var(--green);
 
-    & p {
-        color: var(--red);}
+  & h2 {
+    background-color: var(--yellow);
+  }
+
+  & p {
+    color: var(--red);
+  }
 }

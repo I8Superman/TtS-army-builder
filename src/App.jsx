@@ -1,21 +1,33 @@
-import { useState } from 'react'
-import Card from '@/components/Card/Card'
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider
+} from 'react-router-dom'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Pages
+import Home from './pages/Home/Home'
+import About from './pages/About/About'
+import PageNotFound from './pages/PageNotFound/PageNotFound'
 
+
+// Layouts
+import RootLayout from '@/layouts/RootLayout/RootLayout'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Route>
+  )
+)
+
+function App() {
   return (
-    <>
-      <h2>This is an h2 in the App component</h2>
-      <p>Here is some p text in the app component</p>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <Card />
-      <Card />
-      <Card />
-    </>
+    <RouterProvider router={router} />
   )
 }
 

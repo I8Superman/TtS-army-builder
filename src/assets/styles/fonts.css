@@ -1,0 +1,254 @@
+/* Font faces defined here */
+
+/* EB Garamond: */
+
+/* eb-garamond-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v27-latin-regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-regular.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-regular.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-regular.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v27-latin-italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-italic.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-italic.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-italic.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-italic.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/eb-garamond-v27-latin-500.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-500.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-500.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-500.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-500.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-500.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-500italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 500;
+  src: url("../fonts/eb-garamond-v27-latin-500italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-500italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-500italic.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-500italic.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-500italic.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-500italic.svg#EBGaramond")
+      format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/eb-garamond-v27-latin-600.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-600.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-600.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-600.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-600.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-600.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-600italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/eb-garamond-v27-latin-600italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-600italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-600italic.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-600italic.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-600italic.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-600italic.svg#EBGaramond")
+      format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/eb-garamond-v27-latin-700.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-700.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-700.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-700.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-700.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-700italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/eb-garamond-v27-latin-700italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-700italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-700italic.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-700italic.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-700italic.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-700italic.svg#EBGaramond")
+      format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/eb-garamond-v27-latin-800.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-800.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-800.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-800.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-800.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-800.svg#EBGaramond") format("svg"); /* Legacy iOS */
+}
+/* eb-garamond-800italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 800;
+  src: url("../fonts/eb-garamond-v27-latin-800italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/eb-garamond-v27-latin-800italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/eb-garamond-v27-latin-800italic.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("../fonts/eb-garamond-v27-latin-800italic.woff") format("woff"),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+      url("../fonts/eb-garamond-v27-latin-800italic.ttf") format("truetype"),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+      url("../fonts/eb-garamond-v27-latin-800italic.svg#EBGaramond")
+      format("svg"); /* Legacy iOS */
+}
+
+/* Footlight mt Pro (for headers):  */
+
+@font-face {
+  font-family: "Footlight_bold";
+  src: url("../fonts/footlightmtprobold-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtprobold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_bold_italic";
+  src: url("../fonts/footlightmtprobolditalic-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtprobolditalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_extra_bold";
+  src: url("../fonts/footlightmtproextrabold-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtproextrabold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_extra_bold_italic";
+  src: url("../fonts/footlightmtproextraboldit-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtproextraboldit-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_italic";
+  src: url("../fonts/footlightmtproitalic-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtproitalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_light";
+  src: url("../fonts/footlightmtprolight-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtprolight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_light_italic";
+  src: url("../fonts/footlightmtprolightitalic-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtprolightitalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Footlight_regular";
+  src: url("../fonts/footlightmtproregular-webfont.woff2") format("woff2"),
+    url("../fonts/footlightmtproregular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

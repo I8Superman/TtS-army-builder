@@ -1,21 +1,56 @@
-@import './variables.css';
-
-/* NOTE: CSS files have the .css file name but the SASS/SCSS icon/file association.
-Also, they are technically PostCSS files! I had to associate them with SCSS to be able 
-to use formatting on the files (thats why they have the SCSS icon and the SCSS langage
-mode (see bottom right of screen). Hopefulley, this should not affect the build output
-and still make use of PostCSS plugins ... */
+@import "./variables.css";
+@import "./fonts.css";
 
 /* GLOBAL STYLESHEET: Global styles for the whole app */
 
 html {
-    background: var(--yellow);
+  box-sizing: border-box;
+  /* Sets the font to the default browser font size */
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "EB Garamond", sans-serif;
+  /* background: linear-gradient(0deg, $dark-blue 15%, $violet 100%); */
+}
+
+a,
+a:active,
+a:visited,
+.link {
+  text-decoration: none;
+}
+
+/* Typography */
+h1 {
+  font-family: "Footlight_bold", sans-serif;
 }
 
 p {
-    user-select: none;
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 
-h2 {
-    background-color: var(--red);
+.sm-text {
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Global styles */
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  padding: 0.5rem;
 }
