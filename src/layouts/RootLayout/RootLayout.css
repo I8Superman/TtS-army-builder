@@ -1,7 +1,0 @@
-.root-layout {
-  background-color: var(--dark-purple);
-  background-image: url("@/assets/svgs/laurels-purple.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 65vw;
-}

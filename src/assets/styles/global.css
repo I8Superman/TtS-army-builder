@@ -19,7 +19,6 @@ html {
 
 body {
   font-family: "EB Garamond", sans-serif;
-  /* background: linear-gradient(0deg, $dark-blue 15%, $violet 100%); */
 }
 
 a,
@@ -31,7 +30,7 @@ a:visited,
 
 /* Typography */
 h1 {
-  font-family: "Footlight_bold", sans-serif;
+  font-family: "Footlight_regular", sans-serif;
 }
 
 p {
@@ -48,9 +47,55 @@ p {
 
 /* Global styles */
 
+/* Pages and views */
+
+.view {
+  position: relative;
+}
+
 .page {
+  position: relative;
   width: 100vw;
   height: 100vh;
   height: 100svh;
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menus */
+
+.center-menu {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Buttons and NavLinks */
+.btn {
+  border-radius: 1rem;
+  padding: 0.75rem;
+  display: block;
+
+  &.link {
+    background-color: var(--secondary);
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--white);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  &.option {
+    background-color: var(--contrast);
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--white);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
 }

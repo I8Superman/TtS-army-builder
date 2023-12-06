@@ -2,6 +2,8 @@
 
 /* EB Garamond: */
 
+/* normal, italic, 400, 500, 600, 700, 800 */
+
 /* eb-garamond-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
