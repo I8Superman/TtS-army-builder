@@ -25,6 +25,7 @@ a,
 a:active,
 a:visited,
 .link {
+  display: contents;
   text-decoration: none;
 }
 
@@ -98,4 +99,10 @@ p {
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
     text-align: center;
   }
+}
+
+/* ALERTS */
+
+.error {
+  color: var(--danger);
 }

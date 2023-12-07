@@ -14,4 +14,18 @@
     background-size: 90%;
     filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.8));
   }
+
+  .header-nav {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    .header-nav-item img {
+      width: 10vw;
+    }
+  }
 }
