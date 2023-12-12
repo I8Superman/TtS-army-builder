@@ -25,7 +25,6 @@ a,
 a:active,
 a:visited,
 .link {
-  display: contents;
   text-decoration: none;
 }
 
@@ -56,13 +55,43 @@ p {
 
 .page {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  height: 100svh;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0 0.5rem 0 0.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+
+  &:has(.center-menu) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .actions {
+    background-color: var(--white-purple);
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding: 1rem 1.25rem 1rem 1.25rem;
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+
+    .icon {
+      width: 8vw;
+    }
+  }
+
+  .content {
+    background-color: var(--white-purple);
+    height: 100%;
+    padding: 0.5rem;
+    color: red;
+    overflow-x: scroll;
+  }
 }
 
 /* Menus */

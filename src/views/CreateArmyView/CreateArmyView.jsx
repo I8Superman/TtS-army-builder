@@ -6,10 +6,6 @@ export default function CreateArmyView() {
 
 
     return (
-        <div className="create-army view">
-            <main>
-                <Outlet />
-            </main>
-        </div>
+        <Outlet />
     )
 }

@@ -1,22 +1,41 @@
 
 import './RootView.css'
-import { NavLink } from 'react-router-dom'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import arrowLeftWhite from '@/assets/svgs/arrow-left-white.svg'
 import burgerMenuLightBlue from '@/assets/svgs/burger-menu-light-blue.svg'
+import { useEffect, useState, useRef } from 'react';
+
 
 export default function RootView() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    // const headerNav = useRef(null);
+    const [altBg, setAltBg] = useState(false);
+
+    useEffect(() => { // Set background classes depending on location
+        if (location.pathname.includes('create')) {
+            setAltBg(true);
+        } else {
+            setAltBg(false);
+        }
+    }, [location]);
+
+    // useEffect(() => {
+
+    //     console.log(headerNav.current.offsetHeight)
+    // }, [headerNav])
+
     return (
-        <div className="root view">
+        <div className={altBg ? "root view alt-bg" : "root view"} >
             <header className='header-nav'>
-                <NavLink className='icon go-back header-nav-item'>
+                <div className='icon go-back header-nav-item' onClick={() => navigate(-1)}>
                     <img src={arrowLeftWhite} alt="back-arrow" />
-                </NavLink>
+                </div>
                 <nav className='burger-menu header-nav-item'>
                     <img src={burgerMenuLightBlue} alt="" />
                 </nav>
             </header>
-            <main>
+            <main className='main'>
                 <Outlet />
             </main>
         </div>
