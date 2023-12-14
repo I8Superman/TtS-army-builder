@@ -1,21 +1,179 @@
-@import './variables.css';
-
-/* NOTE: CSS files have the .css file name but the SASS/SCSS icon/file association.
-Also, they are technically PostCSS files! I had to associate them with SCSS to be able 
-to use formatting on the files (thats why they have the SCSS icon and the SCSS langage
-mode (see bottom right of screen). Hopefulley, this should not affect the build output
-and still make use of PostCSS plugins ... */
+@import "./variables.css";
+@import "./fonts.css";
 
 /* GLOBAL STYLESHEET: Global styles for the whole app */
 
 html {
-    background: var(--yellow);
+  box-sizing: border-box;
+  /* Sets the font to the default browser font size */
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "EB Garamond", sans-serif;
+}
+
+a,
+a:active,
+a:visited,
+.link {
+  text-decoration: none;
+}
+
+/* Typography */
+h1 {
+  font-family: "Footlight_regular", sans-serif;
 }
 
 p {
-    user-select: none;
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 
-h2 {
-    background-color: var(--red);
+.sm-text {
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Global styles */
+
+/* Pages and views */
+
+.view {
+  position: relative;
+}
+
+.page {
+  position: relative;
+  padding: 0 0.5rem 0 0.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+
+  &:has(.center-menu) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .actions {
+    background-color: var(--white-purple);
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding: 1rem 1.25rem 1rem 1.25rem;
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+
+    .icon {
+      width: 8vw;
+    }
+  }
+
+  .content {
+    background-color: var(--white-purple);
+    height: 100%;
+    padding: 0.5rem;
+    overflow-x: scroll;
+  }
+}
+
+/* Menus */
+
+.center-menu {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Buttons and NavLinks */
+.btn {
+  border-radius: 1rem;
+  padding: 0.75rem;
+  display: block;
+
+  &.link {
+    background-color: var(--secondary);
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--white);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  &.option {
+    background-color: var(--contrast);
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--white);
+    box-shadow: inner 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+}
+
+/* ALERTS */
+
+.error {
+  color: var(--danger);
+}
+
+/* INPUTS */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font: var(--input-text);
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.input-text,
+.text-area {
+  width: 100%;
+  border: none;
+  border-radius: 0.75rem;
+  background-color: var(--ultralight-purple);
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  font: var(--input-text);
+  color: var(--primary);
+  box-shadow: inset 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px $black solid;
+    font-size: $ml;
+  }
+}
+
+.text-area {
+  /* resize: vertical; */
+  border-radius: 0.75rem 0.75rem 0 0.75rem;
+
+  &::-webkit-resizer {
+    background-image: url("@/assets/svgs/resizer.svg");
+    width: 3rem;
+    z-index: 1;
+  }
 }

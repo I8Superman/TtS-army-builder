@@ -1,21 +1,45 @@
-import { useState } from 'react'
-import Card from '@/components/Card/Card'
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider
+} from 'react-router-dom'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Views
+import ArmyForm from '@/pages/CreateArmy/ArmyForm/ArmyForm'
+import RootView from '@/views/RootView/RootView'
 
+// Pages
+import Home from './pages/Home/Home'
+import About from './pages/About/About'
+import PageNotFound from './pages/PageNotFound/PageNotFound'
+import CreateOrder from '@/pages/CreateOrder/CreateOrder'
+import MyOrders from '@/pages/MyOrders/MyOrders'
+import BrowseArmies from '@/pages/BrowseArmies/BrowseArmies'
+import SelectArmy from '@/pages/CreateArmy/SelectArmy/SelectArmy'
+import CreateArmyView from '@/views/CreateArmyView/CreateArmyView'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootView />}>
+      <Route index element={<Home />} />
+      <Route path="/create-order-of-battle" element={<CreateOrder />} />
+      <Route path="/my-orders-of-battle" element={<MyOrders />} />
+      <Route path="/browse-armies" element={<BrowseArmies />} />
+      <Route path="/create-army-list" element={<CreateArmyView />}>
+        <Route index element={<SelectArmy />} />
+        <Route path=":list" element={<ArmyForm />} />
+      </Route>
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Route>
+  )
+)
+
+function App() {
   return (
-    <>
-      <h2>This is an h2 in the App component</h2>
-      <p>Here is some p text in the app component</p>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <Card />
-      <Card />
-      <Card />
-    </>
+    <RouterProvider router={router} />
   )
 }
 

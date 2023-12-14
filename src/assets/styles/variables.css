@@ -1,8 +1,29 @@
 /* VARIABLES: All custom properties used in both global and local styles */
 
+/* RAW COLORS */
 :root {
-    --green: green;
-    --red: red;
-    --blue: blue;
-    --yellow: yellow;
+  /* Theme colors */
+  --purple: #835298;
+  --dark-purple: #381748;
+  --light-purple: #927da4;
+  --ultralight-purple: #ccc3d7;
+  --white-purple: #e9e6ee;
+  --blue: #3066a0;
+  --light-blue: #61b9ef;
+  --red: #d2382d;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Alert colors */
+  --success: #4caf50;
+  --danger: #f44336;
+  --info: #2196f3;
+  --warning: #ff9800;
+}
+
+/* HIGHER LEVEL VARIABLES */
+:root {
+  --primary: var(--dark-purple);
+  --secondary: var(--purple);
+  --contrast: var(--blue);
 }
