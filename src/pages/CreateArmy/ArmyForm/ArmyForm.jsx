@@ -29,28 +29,54 @@ export default function ArmyForm() {
             <div className="content">
                 {/* noValidate overrides the html validation so we can make our own */}
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                    <label>
-                        <span>Army List title:</span>
+                    <div className="input-container">
+                        <label htmlFor='title'>Army List title:</label>
                         <input
-                            name="name"
-                            {...register('name', {
-                                required: 'Name is required'
+                            id='title'
+                            name="title"
+                            className='input-text'
+                            {...register('titla', {
+                                required: 'A title for the army is required'
                             })}
-                        // placeholder="Army name here"
+                            placeholder='Enter Army List title'
                         />
-                        <p className='error'>{errors.name?.message}</p>
-                    </label>
-                    <label>
-                        <span>Time period:</span>
+                        <p className='error'>{errors.title?.message}</p>
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='allies'>Possible allies:</label>
                         <input
-                            name="period"
-                            {...register('period', {
-                                required: 'A time period is needed!'
-                            })}
-                        // placeholder="Time perod"
+                            id='allies'
+                            name="allies"
+                            className='input-text'
+                            {...register('allies')}
+                            placeholder='Comma separated allies??'
                         />
-                        <p className='error'>{errors.period?.message}</p>
-                    </label>
+                        <p className='error'>{errors.allies?.message}</p>
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='short-description'>Short description:</label>
+                        <textarea
+                            id='short-description'
+                            name="short-description"
+                            className='text-area'
+                            {...register('short')}
+                            placeholder='Short text about what army, geography and time period the Army List covers'
+                        />
+                        <p className='error'>{errors.short?.message}</p>
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='long-description'>Long description:</label>
+                        <textarea
+                            id='long-description'
+                            name="long-description"
+                            className='text-area'
+                            {...register('long')}
+                            placeholder='Write a longer description of the army and its background here'
+                            rows='3'
+                        />
+                        <p className='error'>{errors.short?.message}</p>
+                    </div>
+
                     <label>
                         <span># of units:</span>
                         <input

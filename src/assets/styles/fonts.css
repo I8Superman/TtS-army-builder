@@ -254,3 +254,23 @@
   font-weight: normal;
   font-style: normal;
 }
+
+/* PRE-DEFINED TYPOGRAPHY */
+
+:root {
+  /* Paragraph standard */
+  --paragraph: normal 400 1.25rem "EB Garamond", sans-serif;
+
+  /* Input text */
+  --input-text: normal 400 1rem/1.25rem "EB Garamond", sans-serif;
+
+  /* Paragraph header */
+
+  /* Header 1 */
+
+  /* Header 2 */
+
+  /* Header 3 */
+
+  /* Alerts */
+}
