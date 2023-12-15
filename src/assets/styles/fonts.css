@@ -261,6 +261,9 @@
   /* Paragraph standard */
   --paragraph: normal 400 1.25rem "EB Garamond", sans-serif;
 
+  /* Paragraph bold */
+  --paragraph-bold: normal 600 1.25rem "EB Garamond", sans-serif;
+
   /* Input text */
   --input-text: normal 400 1rem/1.25rem "EB Garamond", sans-serif;
 

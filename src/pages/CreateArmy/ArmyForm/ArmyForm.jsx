@@ -3,9 +3,13 @@ import './ArmyForm.css'
 import { useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
+
+// Icons
 import printIcon from '@/assets/svgs/printer-dark-purple.svg'
 import eyeIcon from '@/assets/svgs/eye-dark-purple.svg'
 import copyIcon from '@/assets/svgs/copy-dark-purple.svg'
+import plusSquareBlue from '@/assets/svgs/plus-square-blue.svg'
+import { useState } from 'react'
 
 export default function ArmyForm() {
     const location = useLocation();
@@ -13,6 +17,8 @@ export default function ArmyForm() {
 
     const { register, control, handleSubmit, formState } = useForm();
     const { errors } = formState;
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const onSubmit = (formValues) => {
         console.log('Form submitted', formValues);
@@ -35,13 +41,52 @@ export default function ArmyForm() {
                             id='title'
                             name="title"
                             className='input-text'
-                            {...register('titla', {
+                            {...register('title', {
                                 required: 'A title for the army is required'
                             })}
                             placeholder='Enter Army List title'
                         />
                         <p className='error'>{errors.title?.message}</p>
                     </div>
+
+                    <div className="build-functions">
+                        <div className="build-option army-option">
+                            <div className="option-header">
+                                <p className='option-title'>Add army option</p>
+                                <img className='option-toggle' src={plusSquareBlue} alt="drop-down-chevron" />
+                            </div>
+                        </div>
+                        <div className="build-option">
+                            <div className="option-header">
+                                <p className='option-title'>Configure Generals and Heroes</p>
+                                <img className='option-toggle' src={plusSquareBlue} alt="drop-down-chevron" />
+                            </div>
+                        </div>
+                        <div className="add-option build-option">
+                            <div className="option-header">
+                                <p className='option-title'>Add Unit</p>
+                                <img className='option-toggle' src={plusSquareBlue} onClick={() => setIsOpen(!isOpen)} alt="drop-down-chevron" />
+                            </div>
+                            {isOpen && (
+                                <form className="add-unit-form">
+                                    <div className="input-container">
+                                        <label htmlFor='title'>Unit name:</label>
+                                        <input
+                                            id='name'
+                                            name="name"
+                                            className='input-text'
+                                            {...register('name', {
+                                                required: 'A name is required'
+                                            })}
+                                            placeholder='Enter Unit name'
+                                        />
+                                        <p className='error'>{errors.title?.message}</p>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
+                    </div>
+
                     <div className="input-container">
                         <label htmlFor='allies'>Possible allies:</label>
                         <input
@@ -77,46 +122,13 @@ export default function ArmyForm() {
                         <p className='error'>{errors.short?.message}</p>
                     </div>
 
-                    <label>
-                        <span># of units:</span>
-                        <input
-                            name="unitNumber"
-                            {...register('unitNumber', {
-                                required: 'also required'
-                            })}
-                        // placeholder="Number of units"
-                        />
-                        <p className='error'>{errors.unitNumber?.message}</p>
-                    </label>
-                    <label>
-                        <span>State:</span>
-                        <select name="country"
-                            {...register('country')}
-                        >
-                            <option>Sparta</option>
-                            <option>Greece</option>
-                            <option>Persia</option>
-                            <option>France</option>
-                        </select>
-                    </label>
+
                     <button type="submit">Submit form</button>
                     {/* <button onClick={resetForm}>Reset Form</button> */}
-                </form>
+                </form >
                 {/* <DevTool control={control} /> */}
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti aperiam doloremque pariatur, adipisci perferendis consequatur, sint incidunt dicta totam nulla libero? Officiis at minus facere, delectus exercitationem impedit libero nemo?
-                    Quod nemo aliquam nostrum aperiam optio rem porro veritatis, expedita voluptates illum doloribus eligendi dolorum? Quasi sit debitis qui nemo, hic repellat eos architecto tempora consectetur, voluptas expedita voluptatum dolores?
-                    Consectetur ducimus accusantium suscipit accusamus. Facere voluptatem dolor vel architecto, nostrum ipsa distinctio aliquid fuga fugiat nulla officia excepturi autem assumenda debitis saepe nam esse cupiditate. Possimus temporibus ipsa maiores.
-                </p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti aperiam doloremque pariatur, adipisci perferendis consequatur, sint incidunt dicta totam nulla libero? Officiis at minus facere, delectus exercitationem impedit libero nemo?
-                    Quod nemo aliquam nostrum aperiam optio rem porro veritatis, expedita voluptates illum doloribus eligendi dolorum? Quasi sit debitis qui nemo, hic repellat eos architecto tempora consectetur, voluptas expedita voluptatum dolores?
-                    Consectetur ducimus accusantium suscipit accusamus. Facere voluptatem dolor vel architecto, nostrum ipsa distinctio aliquid fuga fugiat nulla officia excepturi autem assumenda debitis saepe nam esse cupiditate. Possimus temporibus ipsa maiores.
-                </p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti aperiam doloremque pariatur, adipisci perferendis consequatur, sint incidunt dicta totam nulla libero? Officiis at minus facere, delectus exercitationem impedit libero nemo?
-                    Quod nemo aliquam nostrum aperiam optio rem porro veritatis, expedita voluptates illum doloribus eligendi dolorum? Quasi sit debitis qui nemo, hic repellat eos architecto tempora consectetur, voluptas expedita voluptatum dolores?
-                    Consectetur ducimus accusantium suscipit accusamus. Facere voluptatem dolor vel architecto, nostrum ipsa distinctio aliquid fuga fugiat nulla officia excepturi autem assumenda debitis saepe nam esse cupiditate. Possimus temporibus ipsa maiores.
-                </p>
-                <br /><br /><br />
-            </div>
-        </div>
+
+            </div >
+        </div >
     )
 }
