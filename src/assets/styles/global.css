@@ -53,7 +53,7 @@ p {
   position: relative;
 }
 
-.page {
+/* .page {
   position: relative;
   padding: 0 0.5rem 0 0.5rem;
   height: 100%;
@@ -64,33 +64,32 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
 
-  .title {
-    color: var(--white);
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
+.title {
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
 
-  .actions {
-    background-color: var(--white-purple);
-    border-radius: 1rem 1rem 0rem 0rem;
-    padding: 1rem 1.25rem 1rem 1.25rem;
-    display: flex;
-    justify-content: end;
-    gap: 2rem;
+.actions {
+  background-color: var(--white-purple);
+  border-radius: 1rem 1rem 0rem 0rem;
+  padding: 1rem 1.25rem 1rem 1.25rem;
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
 
-    .icon {
-      width: 8vw;
-    }
+  .icon {
+    width: 8vw;
   }
+}
 
-  .content {
-    background-color: var(--white-purple);
-    height: 100%;
-    padding: 0.5rem;
-    overflow-x: scroll;
-  }
+.content {
+  background-color: var(--white-purple);
+  height: 100%;
+  padding: 0.5rem;
+  overflow-x: scroll;
 }
 
 /* Menus */
@@ -102,30 +101,21 @@ p {
   gap: 1.5rem;
 }
 
-/* Buttons and NavLinks */
-.btn {
+/* Links & NavLinks */
+.btn-link {
   border-radius: 1rem;
   padding: 0.75rem;
   display: block;
-
-  &.link {
-    background-color: var(--secondary);
-    font-family: "EB Garamond", sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: var(--white);
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
-    text-align: center;
-  }
+  background-color: var(--secondary);
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--white);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  text-align: center;
 
   &.option {
     background-color: var(--contrast);
-    font-family: "EB Garamond", sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: var(--white);
-    box-shadow: inner 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
-    text-align: center;
   }
 }
 

@@ -1,0 +1,13 @@
+.page {
+  position: relative;
+  padding: 0 0.5rem 0 0.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+
+  &:has(.center-menu) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
