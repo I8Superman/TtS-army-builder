@@ -1,41 +1,36 @@
 
 import './ArmyForm.css'
 import { useLocation } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+// import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 
 // Icons
-import printIcon from '@/assets/svgs/printer-dark-purple.svg'
-import eyeIcon from '@/assets/svgs/eye-dark-purple.svg'
-import copyIcon from '@/assets/svgs/copy-dark-purple.svg'
-import plusSquareBlue from '@/assets/svgs/plus-square-blue.svg'
+
+import plusSquareBlue from '@/assets/svgs/add-blue.svg'
+
 import { useState } from 'react'
 import Page from '@/components/Page/Page'
+
+import TitleAndDescription from '@/components/forms/TitleAndDescription/TitleAndDescription'
 
 export default function ArmyForm() {
     const location = useLocation();
     const { list } = location.state;
 
-    const { register, control, handleSubmit, formState } = useForm();
-    const { errors } = formState;
+    // const { register, control, handleSubmit, formState: { errors } } = useForm();
 
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
-    const onSubmit = (formValues) => {
-        console.log('Form submitted', formValues);
-    }
+    // const onSubmit = (formValues) => {
+    //     console.log('Form submitted', formValues);
+    // }
 
     return (
-        <Page title={list} actions={['print', 'copy', 'eye']} color='dark-purple'>
-            {/* <h3 className='title'>Create {list} Army List</h3>
-            <div className="actions">
-                <img className="icon" src={printIcon} alt="" />
-                <img className="icon" src={copyIcon} alt="" />
-                <img className="icon" src={eyeIcon} alt="" />
-            </div>
-            <div className="content"> */}
-            {/* noValidate overrides the html validation so we can make our own */}
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Page title={list} actions={['print', 'copy', 'see']} color='dark-purple'>
+            <TitleAndDescription />
+
+
+            {/* <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <div className="input-container">
                     <label htmlFor='title'>Army List title:</label>
                     <input
@@ -131,8 +126,8 @@ export default function ArmyForm() {
 
 
                 <button type="submit">Submit form</button>
-                {/* <button onClick={resetForm}>Reset Form</button> */}
-            </form >
+                }
+            </form > */}
             {/* <DevTool control={control} /> */}
 
             {/* </div > */}

@@ -66,32 +66,6 @@ p {
     align-items: center;
   } */
 
-.title {
-  color: var(--white);
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.actions {
-  background-color: var(--white-purple);
-  border-radius: 1rem 1rem 0rem 0rem;
-  padding: 1rem 1.25rem 1rem 1.25rem;
-  display: flex;
-  justify-content: end;
-  gap: 2rem;
-
-  .icon {
-    width: 8vw;
-  }
-}
-
-.content {
-  background-color: var(--white-purple);
-  height: 100%;
-  padding: 0.5rem;
-  overflow-x: scroll;
-}
-
 /* Menus */
 
 .center-menu {
@@ -126,75 +100,3 @@ p {
 }
 
 /* INPUTS */
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-label {
-  font: var(--input-text);
-  color: var(--primary);
-  margin-bottom: 0.25rem;
-}
-
-.input-text,
-.text-area {
-  width: 100%;
-  border: none;
-  border-radius: 0.75rem;
-  background-color: var(--ultralight-purple);
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  font: var(--input-text);
-  color: var(--primary);
-  box-shadow: inset 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
-
-  &:focus {
-    outline: none;
-    border-bottom: 2px $black solid;
-    font-size: $ml;
-  }
-}
-
-.text-area {
-  /* resize: vertical; */
-  border-radius: 0.75rem 0.75rem 0 0.75rem;
-
-  /* ADD GREATER HEIGHT FOR MOBILE (because no resize is available on mobile */
-  /* REMOVE SHARP LOWR RIGHT CORNER AS WELL (as no space needed for resizer) */
-
-  &::-webkit-resizer {
-    background-image: url("@/assets/svgs/resizer.svg");
-  }
-}
-
-.build-option {
-  border: 2px solid var(--blue);
-  border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-  margin-bottom: 0.5rem;
-
-  &.army-option {
-    background-color: var(--ultralight-purple);
-  }
-
-  .option-header {
-    /* padding-right: 0.5rem; */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-
-    .option-title {
-      font: var(--paragraph-bold);
-      color: var(--blue);
-    }
-
-    .option-toggle {
-      width: 1.5rem;
-    }
-  }
-}
