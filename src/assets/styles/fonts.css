@@ -276,4 +276,7 @@
   /* Header 3 */
 
   /* Alerts */
+
+  /* Button text */
+  --button-text: normal 600 1rem "EB Garamond", sans-serif;
 }
