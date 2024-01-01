@@ -16,7 +16,6 @@ import InputField from '@/components/forms/InputField/InputField';
 
 const TitleAndDescription = ({ submitAction }) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm();
-
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -34,7 +33,7 @@ const TitleAndDescription = ({ submitAction }) => {
                         name='title'
                         title='Army title:'
                         placeholder='Give your Army a title'
-                        validation={{ required: 'The Army must be given a title' }}
+                        options={{ required: 'The Army must be given a title' }}
                     />
                     <InputField
                         element='input'
@@ -43,7 +42,7 @@ const TitleAndDescription = ({ submitAction }) => {
                         name='allies'
                         title='Possible allies:'
                         placeholder='List the possible allies of this army'
-                        validation={{ required: 'Please list allies' }}
+                        options={{ required: 'Please list allies' }}
                     />
                     <InputField
                         element='textarea'
@@ -51,7 +50,7 @@ const TitleAndDescription = ({ submitAction }) => {
                         name='description.short'
                         title='Description (short):'
                         placeholder='List the possible allies of this army'
-                        validation={{ required: 'Short text yes' }}
+                        options={{ required: 'Short text yes' }}
                     />
                     <InputField
                         element='textarea'
@@ -59,10 +58,9 @@ const TitleAndDescription = ({ submitAction }) => {
                         name='description.long'
                         title='Description (long):'
                         placeholder='Longer background story'
-                        validation={{ required: 'Looong test yeah' }}
+                        options={{ required: 'Looong test yeah' }}
                     />
                     <Button type='submit' color='submit'>Save Army data</Button>
-
                 </form>
             )}
             <DevTool control={control} />

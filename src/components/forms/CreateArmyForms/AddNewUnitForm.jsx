@@ -14,8 +14,6 @@ const AddNewUnit = ({ submitAction }) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm();
     const [isOpen, setIsOpen] = useState(false);
 
-
-
     return (
         <div className="build-form">
             <div className="option-header">

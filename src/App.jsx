@@ -19,6 +19,7 @@ import MyOrders from '@/pages/MyOrders/MyOrders'
 import BrowseArmies from '@/pages/BrowseArmies/BrowseArmies'
 import SelectArmy from '@/pages/CreateArmy/SelectArmy/SelectArmy'
 import CreateArmyView from '@/views/CreateArmyView/CreateArmyView'
+import NameArmy from '@/pages/CreateArmy/NameArmy/NameArmy'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +30,8 @@ const router = createBrowserRouter(
       <Route path="/browse-armies" element={<BrowseArmies />} />
       <Route path="/create-army-list" element={<CreateArmyView />}>
         <Route index element={<SelectArmy />} />
-        <Route path=":list" element={<ArmyForm />} />
+        <Route path=":setting" element={<NameArmy />} />
+        <Route path=":setting/:army" element={<ArmyForm />} />
       </Route>
       <Route path="/about" element={<About />} />
       <Route path="*" element={<PageNotFound />} />

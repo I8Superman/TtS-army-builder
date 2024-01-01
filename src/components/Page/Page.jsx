@@ -6,7 +6,7 @@ const Page = ({ title, actions, classes, children, color }) => {
 
     return (
         <div className={classes ? "page " + classes.join(' ') : "page"}>
-            <h3 className='title'>Create {title} Army List</h3>
+            <h3 className='title'>{title}</h3>
             {actions && (
                 <div className="actions">
                     {actions.map(action => (

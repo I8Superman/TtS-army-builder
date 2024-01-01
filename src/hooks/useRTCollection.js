@@ -25,7 +25,7 @@ export const useRTCollection = (c) => {
         }, (err) => {
             console.log(err.message)
             setDocuments(null) // If something went wrong, we dont want any documents
-            setError("Something went wrong! Couldn't get the data.")
+            setError("Something went wrong! Couldn't get the documents")
         })
         // Clean up (unsubscribing to the realtime listener)
         return () => unsub()

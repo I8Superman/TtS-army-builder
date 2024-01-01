@@ -51,6 +51,7 @@ export const useFirestore = (c) => {
             const addedDocument = await addDoc(colRef, newDoc)
             dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument })
             // Unlike Vue, we handle setting isPending to false in our firestoreReducer func, instead of here
+            console.log('addedDocument: ', addedDocument)
             return addedDocument
         } catch (error) {
             dispatchIfNotCancelled({ type: 'ERROR', payload: error.message })

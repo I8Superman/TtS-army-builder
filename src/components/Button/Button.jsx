@@ -1,13 +1,14 @@
 
 import './Button.css'
 
-const Button = ({ type, func, children, color }) => {
+const Button = ({ type, func, children, color, disabled }) => {
 
     return (
         <button
             type={type}
-            className={`button ${color}`}
+            className={color ? `button ${color}` : 'button'}
             onClick={func}
+            disabled={disabled}
         >
             {children}
         </button>

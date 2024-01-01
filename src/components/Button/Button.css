@@ -5,12 +5,23 @@
   border: none;
   padding: 0.25rem 1rem 0.25rem 1rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 
-  &.submit {
+  &.green {
+    color: var(--white);
+    background-color: var(--green);
+  }
+
+  &[type="submit"] {
     background-color: var(--secondary);
     color: var(--white);
     display: block;
     margin-left: auto;
     margin-right: 0;
   }
+}
+
+.button:disabled {
+  background-color: var(--ultralight-purple);
+  color: var(--light-purple);
 }

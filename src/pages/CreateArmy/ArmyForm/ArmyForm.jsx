@@ -1,43 +1,47 @@
 
 import './ArmyForm.css'
+
 import { useLocation } from 'react-router-dom'
 // import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 import { useFirestore } from '@/hooks/useFirestore';
 import { serverTimestamp } from 'firebase/firestore'
 
-import { useRTCollection } from '@/hooks/useRTCollection';
-// Icons
+// import { useRTDocument } from '@/hooks/useRTDocument';
 
+// Icons
 import plusSquareBlue from '@/assets/svgs/add-blue.svg'
 
 import { useEffect, useState } from 'react'
 
 import Page from '@/components/Page/Page'
 
-import TitleAndDescription from '@/components/forms/CreateArmyForms/TitleAndDescription'
-import AddNewUnit from '@/components/forms/CreateArmyForms/AddNewUnit'
+import TitleAndDescriptionForm from '@/components/forms/CreateArmyForms/TitleAndDescriptionForm'
+import AddNewUnitForm from '@/components/forms/CreateArmyForms/AddNewUnitForm'
 
 export default function ArmyForm() {
+
+    const { addDocument, updateDocument, response } = useFirestore('armylists')
+    const [currentArmy, setCurrentArmy] = useState(null);
+
     const location = useLocation();
-    const { list } = location.state;
+    const { setting } = location.state;
 
-    const { addDocument, updateDocument, response } = useFirestore('armies')
-    const [docCreated, setDocCreated] = useState(false);
-
-    const { documents, error } = useRTCollection('armies')
+    // const { document, error } = useRTDocument('armies', currentArmy)
 
     useEffect(() => {
-        console.log(documents)
-    }, [documents])
+        console.log('logging currentArmy: ', currentArmy)
+    }, [currentArmy])
 
     const onSubmit = async (formValues) => {
-        if (!docCreated) {
+        console.log(formValues)
+        if (!currentArmy) {
             console.log('Not created yet')
             const formValuesWithCreatedTimestamp = { ...formValues, createdAt: serverTimestamp() }
             console.log('Form submitted', formValuesWithCreatedTimestamp);
-            await addDocument(formValuesWithCreatedTimestamp);
-            setDocCreated(true)
+            const res = await addDocument(formValuesWithCreatedTimestamp);
+            setCurrentArmy(res.id)
+
         } else {
             console.log('Created, now updating!')
             const formValuesWithUpdatedTimestamp = { ...formValues, updatedAt: serverTimestamp() }
@@ -47,17 +51,19 @@ export default function ArmyForm() {
     }
 
     return (
-        <Page title={list} actions={['print', 'copy', 'see']} color='dark-purple'>
-            <TitleAndDescription submitAction={onSubmit} />
-            <AddNewUnit submitAction={onSubmit} />
+        <Page title={setting} actions={['print', 'copy', 'see']} color='dark-purple'>
+            <TitleAndDescriptionForm submitAction={onSubmit} />
+            <AddNewUnitForm submitAction={onSubmit} />
             <div className="display-army">
-                {error && <p className='error-message'>{error.message}</p>}
-                {documents && documents.map((list) => (
-                    <div className="army" key={list.id}>
-                        <h3>{list.id}</h3>
-                        <p>Yhis is a single army list</p>
+                {/* {error && <p className='error-message'>{error.message}</p>} */}
+                {/* {document && (
+                    <div className="document">
+                        <h3>{document.id}</h3>
+                        <p>{document.title}</p>
+                        <br />
+                        <p>{document.descriptions.short}</p>
                     </div>
-                ))}
+                )}*/}
             </div>
         </Page>
     )

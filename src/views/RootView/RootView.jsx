@@ -20,11 +20,6 @@ export default function RootView() {
         }
     }, [location]);
 
-    // useEffect(() => {
-
-    //     console.log(headerNav.current.offsetHeight)
-    // }, [headerNav])
-
     return (
         <div className={altBg ? "root view alt-bg" : "root view"} >
             <header className='header-nav'>
