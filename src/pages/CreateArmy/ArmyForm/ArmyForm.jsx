@@ -25,7 +25,7 @@ export default function ArmyForm() {
     const [currentArmy, setCurrentArmy] = useState(null);
 
     const location = useLocation();
-    const { setting } = location.state;
+    const { setting, title } = location.state;
 
     // const { document, error } = useRTDocument('armies', currentArmy)
 
@@ -51,7 +51,7 @@ export default function ArmyForm() {
     }
 
     return (
-        <Page title={setting} actions={['print', 'copy', 'see']} color='dark-purple'>
+        <Page title={title} actions={['print', 'copy', 'see']} color='dark-purple'>
             <TitleAndDescriptionForm submitAction={onSubmit} />
             <AddNewUnitForm submitAction={onSubmit} />
             <div className="display-army">

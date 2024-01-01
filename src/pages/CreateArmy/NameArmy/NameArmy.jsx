@@ -18,12 +18,6 @@ const NameArmy = () => {
     const location = useLocation();
     const { setting } = location.state;
 
-    useEffect(() => {
-        if (setting) {
-            console.log('rerender', setting)
-        }
-    }, [setting])
-
     const isCreatable = watch('title')
 
     const onSubmit = async (formValues) => {
@@ -32,12 +26,12 @@ const NameArmy = () => {
         console.log(titleToUrl)
         const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), urlTitle: titleToUrl }
         addDocument(addedTimeStamp)
-        navigate(`./${titleToUrl}`, { state: { setting: setting } })
+        navigate(`./${titleToUrl}`, { state: { setting: setting, title: formValues.title } })
     }
 
     return (
         <Page title={'Choose Army List title'} color='dark-purple'>
-            <h1>Army name here</h1>
+            <h3>First, give your Army List a title.</h3>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <InputField
                     element='input'
