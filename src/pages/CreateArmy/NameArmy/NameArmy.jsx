@@ -1,15 +1,13 @@
 
 import './NameArmy.css'
 import Page from '@/components/Page/Page'
-import InputField from '@/components/forms/Inputfield/Inputfield'
+import InputField from '@/components/forms/InputField/InputField';
 
 import { useForm } from 'react-hook-form'
-import { useNavigate, useLocation, Outlet } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useFirestore } from '@/hooks/useFirestore'
 import { serverTimestamp } from 'firebase/firestore'
 import Button from '@/components/Button/Button'
-import { useEffect, useState } from 'react'
-
 
 const NameArmy = () => {
     const { addDocument, response } = useFirestore('armylists')
