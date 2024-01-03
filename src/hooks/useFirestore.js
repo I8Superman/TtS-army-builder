@@ -64,6 +64,7 @@ export const useFirestore = (c) => {
         dispatch({ type: 'IS_PENDING' })
 
         let docRef = doc(db, c, docId)
+
         try {
             const updatedDocument = await updateDoc(docRef, update)
             dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDocument })

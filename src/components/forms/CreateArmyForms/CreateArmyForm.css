@@ -45,3 +45,48 @@ form {
 .army {
   background-color: beige;
 }
+
+/* Input fields */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  & label {
+    font: var(--input-text);
+    color: var(--primary);
+  }
+
+  .input-field,
+  .textarea {
+    width: 100%;
+    border: none;
+    border-radius: 0.75rem;
+    background-color: var(--white);
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font: var(--input-text);
+    color: var(--primary);
+    box-shadow: inset 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
+
+    &:focus {
+    }
+  }
+
+  .text-area {
+    /* resize: vertical; */
+    border-radius: 0.75rem 0.75rem 0 0.75rem;
+
+    /* ADD GREATER HEIGHT FOR MOBILE (because no resize is available on mobile */
+    /* REMOVE SHARP LOWR RIGHT CORNER AS WELL (as no space needed for resizer) */
+
+    &::-webkit-resizer {
+      background-image: url("@/assets/svgs/resizer.svg");
+    }
+  }
+}
+
+.error-message {
+  font: var(--input-text);
+  color: var(--danger);
+}

@@ -2,18 +2,24 @@
 import './CreateArmyForm.css'
 
 import { useForm } from 'react-hook-form'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DevTool } from '@hookform/devtools'
+import { useFirestore } from '@/hooks/useFirestore';
 
 import addIconBlue from '@/assets/svgs/add-blue.svg'
 import chevronIconBlue from '@/assets/svgs/chevron-blue.svg'
-import InputField from '@/components/forms/InputField/InputField';
+import InputField from '@/components/forms/InputFields/InputField';
 import Button from '../../Button/Button';
+import { arrayUnion } from 'firebase/firestore';
 
-const AddNewUnit = ({ submitAction }) => {
+const AddNewUnit = ({ submitAction, response }) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm();
     const [isOpen, setIsOpen] = useState(false);
+    const { isPending, error: updateErr } = response
 
+    const onSubmit = (formValues) => {
+        submitAction({ unitList: arrayUnion(formValues) })
+    }
     return (
         <div className="build-form">
             <div className="option-header">
@@ -21,7 +27,7 @@ const AddNewUnit = ({ submitAction }) => {
                 <img className='option-toggle' src={isOpen ? chevronIconBlue : addIconBlue} onClick={() => setIsOpen(!isOpen)} alt="drop-down-chevron" />
             </div>
             {isOpen && (
-                <form onSubmit={handleSubmit(submitAction)} noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -41,7 +47,7 @@ const AddNewUnit = ({ submitAction }) => {
                         options={{ required: 'What type of unit are you adding?' }}
                     />
                     {/* Should weapons be an array??? */}
-                    <InputField
+                    {/* <InputField
                         element='input'
                         register={register} errors={errors}
                         type='text'
@@ -77,7 +83,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='Regular, Veteran or Raw'
                         options={{ required: 'Unit must have a quality' }}
                     />
-                    {/* Abilities should be an array */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -87,7 +92,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='Any keyword special rules'
                         options={{}}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -97,7 +101,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='Enter minimum number of units'
                         options={{ required: 'A min number must be specified' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -107,7 +110,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='Enter maximum number of units'
                         options={{ required: 'A max number must be specified' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -117,7 +119,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='How many points does the unit cost?'
                         options={{ required: 'A Points Cost must be entered' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -127,7 +128,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='How many hits can the unit take?'
                         options={{ required: 'How many hits can the unit take?' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -137,7 +137,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder="Enter a number ('+' not necessary)"
                         options={{ required: 'A Save number must be specified' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -147,7 +146,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='Victory Medals lost if the unit is eliminated'
                         options={{ required: 'Enter number of Victory Medals' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -157,7 +155,6 @@ const AddNewUnit = ({ submitAction }) => {
                         placeholder='How many Victory Points is the unit worth?'
                         options={{ required: 'Enter number of Victory Points' }}
                     />
-                    {/* Should be a number */}
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -166,8 +163,9 @@ const AddNewUnit = ({ submitAction }) => {
                         title='Ammo:'
                         placeholder='How much ammo does the unit have?'
                         options={{ required: 'The unit must have some ammo' }}
-                    />
-
+                    /> */}
+                    {isPending && <p>Saving unit...</p>}
+                    {updateErr && <p className='error-message'>{updateErr.message}</p>}
                     <Button type='submit' color='submit'>Add unit to Army List</Button>
                 </form>
             )}

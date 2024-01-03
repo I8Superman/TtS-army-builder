@@ -5,7 +5,7 @@ import { db } from "../firebase/config";
 import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 
 
-export const useRTCollection = (c) => {
+export const useRTCollection = (c, q, o) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
 
@@ -13,6 +13,19 @@ export const useRTCollection = (c) => {
     // as soon as the component that uses the hook mounts
     useEffect(() => {
         let colRef = collection(db, c) // Couldn't the colRef be outside the useEffect?
+
+        if (q && o) { // Check if both a query and an order is passed
+            console.log('Both q & o')
+            colRef = query(colRef, where(...q), orderBy(...o)) // Both query and order passed
+        } else if (q) { // Only queries passed
+            console.log('Only q')
+            colRef = query(colRef, where(...q))
+        } else if (o) { // Only ordering passed
+            console.log('Only o')
+            colRef = query(colRef, orderBy(...o))
+        } else {
+            console.log('No queries!')
+        }
 
         const unsub = onSnapshot(colRef, snapshot => {
             let results = [] // temporary arr to store and treat data

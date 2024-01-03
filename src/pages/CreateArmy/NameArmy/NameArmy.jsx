@@ -1,7 +1,7 @@
 
 import './NameArmy.css'
 import Page from '@/components/Page/Page'
-import InputField from '@/components/forms/InputField/InputField';
+import InputField from '@/components/forms/InputFields/InputField';
 
 import { useForm } from 'react-hook-form'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -22,7 +22,7 @@ const NameArmy = () => {
         console.log('Submiting title', formValues.title)
         const titleToUrl = formValues.title.toLowerCase().split(' ').join('-')
         console.log(titleToUrl)
-        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), urlTitle: titleToUrl }
+        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), urlTitle: titleToUrl, setting: setting }
         addDocument(addedTimeStamp)
         navigate(`./${titleToUrl}`, { state: { setting: setting, title: formValues.title } })
     }
