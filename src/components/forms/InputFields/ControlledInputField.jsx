@@ -2,7 +2,7 @@
 import { Controller } from 'react-hook-form';
 import './InputField.css'
 
-const ControlledInputField = ({ controller, element, register, errors, type, name, title, placeholder, options }) => {
+const ControlledInputField = ({ control, controller, element, register, errors, type, name, title, placeholder, options }) => {
     const nestedErrors = name.split('.').reduce((errorObj, key) => errorObj && errorObj[key], errors);
 
 
@@ -10,6 +10,7 @@ const ControlledInputField = ({ controller, element, register, errors, type, nam
         <div className="input-container">
             <label htmlFor={name}>{title}</label>
             {/* Regular input field: */}
+            <Controller></Controller>
             {element === 'input' && <Controller
                 className='textarea'
                 name={name}

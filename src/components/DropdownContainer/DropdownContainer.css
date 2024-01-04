@@ -1,0 +1,33 @@
+.dropdown-container {
+  border: 2px solid var(--blue);
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+
+  &.non-reset {
+    background-color: var(--ultralight-purple);
+  }
+
+  .option-header {
+    /* padding-right: 0.5rem; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .option-title {
+      font: var(--paragraph-bold);
+      color: var(--blue);
+    }
+
+    .option-toggle {
+      width: 1.5rem;
+      transition: all 0.3s;
+    }
+    .option-toggle.open {
+      transform: rotate(-180deg);
+    }
+  }
+}
