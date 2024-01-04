@@ -6,7 +6,6 @@ import { doc, onSnapshot } from 'firebase/firestore'
 
 
 export const useRTDocument = (c, d) => {
-    console.log('useDocument getting: ', c, ' and: ', d)
     const [document, setDocument] = useState(null)
     const [error, setError] = useState(null)
 
@@ -14,7 +13,7 @@ export const useRTDocument = (c, d) => {
     // as soon as the component that uses the hook mounts
     useEffect(() => {
         let docRef = doc(db, c, d)
-        if (!d) return // If consumer comp hasn't yet provided the doc
+        // if (!d) return // If consumer comp hasn't yet provided the doc
 
         const unsub = onSnapshot(docRef, doc => {
             if (doc.data()) { // Check if the doc actually exists - will be null if it doesnt

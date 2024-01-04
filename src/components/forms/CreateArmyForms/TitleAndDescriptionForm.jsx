@@ -13,27 +13,26 @@ import chevronIconBlue from '@/assets/svgs/chevron-blue.svg'
 // import InputField from '@/components/forms/InputFields/InputField';
 // import ControlledInputField from '@/components/forms/InputFields/ControlledInputField';
 
-const TitleAndDescription = ({ submitAction, response, armylist }) => {
+const TitleAndDescription = ({ submitAction, response, armyList }) => {
     const { control, handleSubmit, formState: { errors }, setValue } = useForm();
     const [isOpen, setIsOpen] = useState(false);
     const { isPending, error: updateErr } = response
 
     useEffect(() => {
-        if (armylist) {
-            setValue('title', armylist.title)
-            setValue('setting', armylist.setting)
-            setValue('allies', armylist.allies)
-            setValue('description.short', armylist.description.short)
-            setValue('description.long', armylist.description.long)
-        }// Doing it with a function:
-        // Object.entries(armylist).forEach(([fieldName, value]) => {
-        //     // Check if you want to set the value for a specific field
-        //     if (fieldName === 'title' || fieldName === 'allies' || fieldName === 'description.short' || fieldName === 'description.long') {
-        //         setValue(fieldName, value);
-        //     }
-        //     // Add more conditions as needed for other fields
-        // });
-    }, [armylist, setValue]);
+        if (armyList) {
+            Object.entries(armyList).forEach(([fieldName, value]) => {
+                // Check if you want to set the value for a specific field (doesnt work with nested data as )
+                if (fieldName === 'title' || fieldName === 'allies' || fieldName === 'setting') {
+                    setValue(fieldName, value);
+                }
+                // Manually add nested values (don't know how to do it in a loop as nested keys are not recognised!):
+                setValue('description.short', armyList.description.short)
+                setValue('description.long', armyList.description.long)
+            });
+        }
+    }, [armyList, setValue]);
+
+    console.log('Title child render')
 
     return (
         <div className="build-form non-reset">
@@ -89,7 +88,6 @@ const TitleAndDescription = ({ submitAction, response, armylist }) => {
                             placeholder='Give your Army a title'
                             defaultValue=''
                             control={control}
-                            rules={{ required: 'The Army List must have a title' }}
                             render={({ field }) => <textarea {...field} className='input-field' id='description-short' rows='3' />}
                         />
                         {errors.description?.short && <p className="error-message">{errors.description.short.message}
@@ -102,7 +100,6 @@ const TitleAndDescription = ({ submitAction, response, armylist }) => {
                             placeholder='Give your Army a title'
                             defaultValue=''
                             control={control}
-                            rules={{ required: 'The Army List must have a title' }}
                             render={({ field }) => <textarea {...field} className='input-field' id='description-long' rows='3' />}
                         />
                         {errors.description?.long && <p className="error-message">{errors.description.long.message}

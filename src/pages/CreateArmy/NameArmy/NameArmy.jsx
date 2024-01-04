@@ -11,7 +11,7 @@ import Button from '@/components/Button/Button'
 
 const NameArmy = () => {
     const { addDocument, response } = useFirestore('armylists')
-    const { register, control, handleSubmit, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const navigate = useNavigate()
     const location = useLocation();
     const { setting } = location.state;
@@ -21,10 +21,10 @@ const NameArmy = () => {
     const onSubmit = async (formValues) => {
         console.log('Submiting title', formValues.title)
         const titleToUrl = formValues.title.toLowerCase().split(' ').join('-')
-        console.log(titleToUrl)
-        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), urlTitle: titleToUrl, setting: setting }
-        addDocument(addedTimeStamp)
-        navigate(`./${titleToUrl}`, { state: { setting: setting, title: formValues.title } })
+        const settingToUrl = setting.toLowerCase().split(' ').join('-')
+        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), titleUrl: titleToUrl, setting: setting, settingUrl: settingToUrl }
+        const res = await addDocument(addedTimeStamp)
+        navigate(`./${res.id}`)
     }
 
     return (

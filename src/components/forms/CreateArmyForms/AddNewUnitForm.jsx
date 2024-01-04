@@ -1,10 +1,9 @@
 // Add a single unit type to the army
 import './CreateArmyForm.css'
 
-import { useForm } from 'react-hook-form'
-import { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form'
+import { useState } from 'react';
 import { DevTool } from '@hookform/devtools'
-import { useFirestore } from '@/hooks/useFirestore';
 
 import addIconBlue from '@/assets/svgs/add-blue.svg'
 import chevronIconBlue from '@/assets/svgs/chevron-blue.svg'
@@ -18,6 +17,8 @@ const AddNewUnit = ({ submitAction, response }) => {
     const { isPending, error: updateErr } = response
 
     const onSubmit = (formValues) => {
+        // arrayUnion() is a Firestore method that atomically adds an element to an arr data value
+        // Here we add the unit to the existing arr of units in the unitList property
         submitAction({ unitList: arrayUnion(formValues) })
     }
     return (
@@ -28,6 +29,21 @@ const AddNewUnit = ({ submitAction, response }) => {
             </div>
             {isOpen && (
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <div className="input-container">
+                        <label htmlFor='title'>Army List title:</label>
+                        <Controller
+                            name='title'
+                            id='title'
+                            placeholder='Give your Army a title'
+                            defaultValue=''
+                            control={control}
+                            rules={{ required: 'The Army List must have a title' }}
+                            render={({ field }) => <input {...field} className='input-field' id='title' />}
+                        />
+                        {errors.title && <p className="error-message">{errors.title.message}
+                        </p>}
+                    </div>
+
                     <InputField
                         element='input'
                         register={register} errors={errors}
@@ -47,7 +63,7 @@ const AddNewUnit = ({ submitAction, response }) => {
                         options={{ required: 'What type of unit are you adding?' }}
                     />
                     {/* Should weapons be an array??? */}
-                    {/* <InputField
+                    <InputField
                         element='input'
                         register={register} errors={errors}
                         type='text'
@@ -163,7 +179,7 @@ const AddNewUnit = ({ submitAction, response }) => {
                         title='Ammo:'
                         placeholder='How much ammo does the unit have?'
                         options={{ required: 'The unit must have some ammo' }}
-                    /> */}
+                    />
                     {isPending && <p>Saving unit...</p>}
                     {updateErr && <p className='error-message'>{updateErr.message}</p>}
                     <Button type='submit' color='submit'>Add unit to Army List</Button>
@@ -171,7 +187,6 @@ const AddNewUnit = ({ submitAction, response }) => {
             )}
             <DevTool control={control} />
         </div>
-        // Name, unit type, weapon, extra weapon, size, quality, abilities, amount.minimum, amount.maximum, cost, Hits, Save, VM, VP, Ammo (obj), ammo-type 
     )
 }
 
