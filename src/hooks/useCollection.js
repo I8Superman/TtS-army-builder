@@ -45,7 +45,6 @@ export const useCollection = (c, q, o) => {
                     setDocuments(null) // If something went wrong, we dont want any documents
                     setError("Something went wrong! Couldn't get the documents")
                 }
-
             }
             fetchData()
         }

@@ -18,11 +18,10 @@ const DisplayArmy = ({ armyList, error }) => {
             {!armyList && <p>Getting Army List data ...</p>}
             {armyList && (
                 <div className="army-list">
-                    <h3>{armyList.id}</h3>
-                    <p>{armyList.title}</p>
+                    <h3>{armyList.title}</h3>
                 </div>
             )}
-            {armyList && <div className='unit-list'>
+            {armyList?.unitList && <div className='unit-list'>
                 {armyList.unitList.map((unit) => {
                     return (
                         <div key={unit.name}>

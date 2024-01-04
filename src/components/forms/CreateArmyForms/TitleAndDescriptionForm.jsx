@@ -26,8 +26,12 @@ const TitleAndDescription = ({ submitAction, response, armyList }) => {
                     setValue(fieldName, value);
                 }
                 // Manually add nested values (don't know how to do it in a loop as nested keys are not recognised!):
-                setValue('description.short', armyList.description.short)
-                setValue('description.long', armyList.description.long)
+                if (armyList.description.short) {
+                    setValue('description.short', armyList.description.short);
+                }
+                if (armyList.description.long) {
+                    setValue('description.long', armyList.description.long);
+                }
             });
         }
     }, [armyList, setValue]);

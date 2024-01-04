@@ -9,7 +9,6 @@ export const useRTCollection = (c, q, o) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
 
-    console.log('useCollection')
     // We put all the fetch logic inside the useEffect, so we get the data
     // as soon as the component that uses the hook mounts
     useEffect(() => {
@@ -43,7 +42,7 @@ export const useRTCollection = (c, q, o) => {
         })
         // Clean up (unsubscribing to the realtime listener)
         return () => unsub()
-    }, [c])
+    }, [c, q, o])
 
     return { documents, error }
 }

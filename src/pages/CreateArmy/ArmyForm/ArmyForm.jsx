@@ -9,18 +9,15 @@ import { serverTimestamp } from 'firebase/firestore'
 // Icons
 // import plusSquareBlue from '@/assets/svgs/add-blue.svg'
 
-import { useEffect, useState } from 'react'
 import Page from '@/components/Page/Page'
 import TitleAndDescriptionForm from '@/components/forms/CreateArmyForms/TitleAndDescriptionForm'
 import AddNewUnitForm from '@/components/forms/CreateArmyForms/AddNewUnitForm'
 import DisplayArmy from '@/components/DisplayArmy/DisplayArmy';
-import { useCollection } from '@/hooks/useCollection';
 import { useRTDocument } from '../../../hooks/useRTDocument';
 
 export default function ArmyForm() {
     // Get the doc with query from url params:
     const { army } = useParams()
-    const navigate = useNavigate()
 
     // ['titleUrl', '==', army]
     const { document: armyList, error } = useRTDocument('armylists', army)
