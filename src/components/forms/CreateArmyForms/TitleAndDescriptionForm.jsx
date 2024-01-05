@@ -18,7 +18,7 @@ const TitleAndDescription = ({ submitAction, response, armyList }) => {
     const { isPending, error: updateErr } = response
 
     useEffect(() => {
-        if (armyList) {
+        if (armyList) { // Object.entries returns an objects properties 
             Object.entries(armyList).forEach(([fieldName, value]) => {
                 // Check if you want to set the value for a specific field (doesnt work with nested data as )
                 if (fieldName === 'title' || fieldName === 'allies' || fieldName === 'setting') {
@@ -38,13 +38,12 @@ const TitleAndDescription = ({ submitAction, response, armyList }) => {
     console.log('Title child render')
 
     return (
-        <DropdownContainer color='blue' header='Edit title and description'>
+        <DropdownContainer border='blue' bgColor='ultralight-purple' header='Edit title and description'>
             <form onSubmit={handleSubmit(submitAction)} noValidate>
                 <div className="input-container">
                     <label htmlFor='title'>Army List title:</label>
                     <Controller
                         name='title'
-                        id='title'
                         placeholder='Give your Army a title'
                         defaultValue=''
                         control={control}
@@ -71,8 +70,8 @@ const TitleAndDescription = ({ submitAction, response, armyList }) => {
                     <label htmlFor='allies'>Possible Allies:</label>
                     <Controller
                         name='allies'
-                        placeholder='List the possible allies for the army'
-                        defaultValue=''
+                        placeholder='List the possible allies for the army, comma seperated'
+                        defaultValue={[]}
                         control={control}
                         render={({ field }) => <input {...field} className='input-field' id='allies' />}
                     />

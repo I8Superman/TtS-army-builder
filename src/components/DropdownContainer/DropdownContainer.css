@@ -1,15 +1,21 @@
 .dropdown-container {
-  border: 2px solid var(--blue);
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   margin-bottom: 0.5rem;
 
-  &.non-reset {
-    background-color: var(--ultralight-purple);
+  &.blue {
+    border: 2px solid var(--blue);
   }
 
+  &.dark-puprle {
+    border: 2px solid var(--dark-purple);
+  }
+
+  &.bg-ultralight-purple {
+    background-color: var(--ultralight-purple);
+  }
   .option-header {
     /* padding-right: 0.5rem; */
     width: 100%;

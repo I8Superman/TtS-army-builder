@@ -28,28 +28,8 @@ export default function ArmyForm() {
 
 
     const updateArmyList = async (formValues) => {
-        const withTimestamp = { ...formValues, updatedAt: serverTimestamp() }
-        await updateDocument(armyList.id, withTimestamp);
-        // Check if Army List title has changed and change the URL accordingly:
-        // if (formValues.title && formValues.title !== armyList.title) {
-
-        //     const titleToUrl = formValues.title.toLowerCase().split(' ').join('-')
-
-        //     const withTimestampAndTitleChange = { ...withTimestamp, titleUrl: titleToUrl }
-
-        //     await updateDocument(armyList.id, withTimestampAndTitleChange);
-
-
-        //     navigate(`/create-army-list/${armyList.settingUrl}/${titleToUrl}`)
-
-
-        // } else {
-
-
-        //     console.log(armyList)
-        //     await updateDocument(armyList.id, withTimestamp);
-        //     navigate(`/create-army-list/${armyList.settingUrl}/${armyList.titleUrl}`)
-        // }
+        const withUpdateTimestamp = { ...formValues, updatedAt: serverTimestamp() }
+        await updateDocument(armyList.id, withUpdateTimestamp);
     }
 
     return (

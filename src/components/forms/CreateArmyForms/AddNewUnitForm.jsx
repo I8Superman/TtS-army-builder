@@ -5,8 +5,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { useState } from 'react';
 import { DevTool } from '@hookform/devtools'
 
-import addIconBlue from '@/assets/svgs/add-blue.svg'
-import chevronIconBlue from '@/assets/svgs/chevron-blue.svg'
+
 import InputField from '@/components/forms/InputFields/InputField';
 import Button from '../../Button/Button';
 import { arrayUnion } from 'firebase/firestore';
@@ -14,7 +13,6 @@ import DropdownContainer from '../../DropdownContainer/DropdownContainer';
 
 const AddNewUnit = ({ submitAction, response }) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm();
-    const [isOpen, setIsOpen] = useState(false);
     const { isPending, error: updateErr } = response
 
     const onSubmit = (formValues) => {
@@ -23,159 +21,203 @@ const AddNewUnit = ({ submitAction, response }) => {
         submitAction({ unitList: arrayUnion(formValues) })
     }
     return (
-        <DropdownContainer color='blue' header='Add new unit'>
+        <DropdownContainer border='blue' bgColor='white' header='Add new unit'>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <div className="input-container">
-                    <label htmlFor='title'>Army List title:</label>
+                    <label htmlFor='name'>Unit name:</label>
                     <Controller
-                        name='title'
-                        id='title'
-                        placeholder='Give your Army a title'
+                        name='name'
                         defaultValue=''
                         control={control}
-                        rules={{ required: 'The Army List must have a title' }}
-                        render={({ field }) => <input {...field} className='input-field' id='title' />}
+                        rules={{ required: 'A unit must be given a name' }}
+                        render={({ field }) => <input {...field} className='input-field' id='name' placeholder='Give your Unit a name.' />}
                     />
-                    {errors.title && <p className="error-message">{errors.title.message}
-                    </p>}
+                    {errors.name && <p className="error-message">{errors.name.message}</p>}
                 </div>
+                <div className="input-container">
+                    <label htmlFor='type'>Type:</label>
+                    <Controller
+                        name='type'
+                        defaultValue=''
+                        control={control}
+                        rules={{ required: 'What type of unit are you adding?' }}
+                        render={({ field }) => <input {...field} className='input-field' id='type' placeholder='Auxilliary, Light, Cavalry etc.' />}
+                    />
+                    {errors.type && <p className="error-message">{errors.type.message}</p>}
+                </div>
+                <div className="input-container">
+                    <label htmlFor='weapons'>Weapons:</label>
+                    <Controller
+                        name='weapons'
+                        defaultValue={[]}
+                        control={control}
+                        render={({ field }) => <input {...field} className='input-field' id='weapons' placeholder='Primary weapons, if specified. Comma-seperated.' />}
+                    />
+                    {errors.weapons && <p className="error-message">{errors.weapons.message}</p>}
+                </div>
+                <div className="input-container">
+                    <label htmlFor='extra-weapons'>Extra weapons:</label>
+                    <Controller
+                        name='extraWeapons'
+                        defaultValue={[]}
+                        control={control}
+                        render={({ field }) => <input {...field} className='input-field' id='extra-weapons' placeholder='Bow, Sling etc. Comma-seperated.' />}
+                    />
+                    {errors.extraWeapons && <p className="error-message">{errors.extraWeapons.message}</p>}
+                </div>
+                <div className="input-container">
+                    <label htmlFor='size'>Size:</label>
+                    <Controller
+                        name='size'
+                        defaultValue=''
+                        control={control}
+                        render={({ field }) => <input {...field} className='input-field' id='size' placeholder='Regular, Deep, Small etc.' />}
+                    />
+                    {errors.size && <p className="error-message">{errors.size.message}</p>}
+                </div>
+                <div className="input-container">
+                    <label htmlFor='quality'>Quality:</label>
+                    <Controller
+                        name='quality'
+                        defaultValue=''
+                        control={control}
+                        render={({ field }) => <input {...field} className='input-field' id='quality' placeholder='Regular, Veteran or Raw.' />}
+                    />
+                    {errors.quality && <p className="error-message">{errors.quality.message}</p>}
+                </div>
+                <div className="input-container">
+                    <label htmlFor='abilities'>Abilities:</label>
+                    <Controller
+                        name='quality'
+                        defaultValue={[]}
+                        control={control}
+                        render={({ field }) => <input {...field} className='input-field' id='abilities' placeholder='Special abilites or rules. Comma-seperated.' />}
+                    />
+                    {errors.abilities && <p className="error-message">{errors.abilities.message}</p>}
+                </div>
+                <div className="multiple-inputs">
+                    <div className="input-container">
+                        <label htmlFor='min'>Min.:</label>
+                        <Controller
+                            name='amount.min'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'A min number must be specified',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='min' placeholder='# units.' />}
+                        />
 
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='name'
-                    title='Name:'
-                    placeholder='Give your unit a name'
-                    options={{ required: 'A unit must have a name' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='type'
-                    title='Type:'
-                    placeholder='Auxilliary, Light, Cavalry etc.'
-                    options={{ required: 'What type of unit are you adding?' }}
-                />
-                {/* Should weapons be an array??? */}
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='weapons'
-                    title='Weapons:'
-                    placeholder='Primary weapons, if specified.'
-                    options={{}}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='extraWeapons'
-                    title='Extra weapons:'
-                    placeholder='Bow, Sling etc.'
-                    options={{}}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='size'
-                    title='Size:'
-                    placeholder='Regular, Deep, Small etc.'
-                    options={{}}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='quality'
-                    title='Quality:'
-                    placeholder='Regular, Veteran or Raw'
-                    options={{ required: 'Unit must have a quality' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='abilities'
-                    title='Abilities: '
-                    placeholder='Any keyword special rules'
-                    options={{}}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='amount.min'
-                    title='Min.:'
-                    placeholder='Enter minimum number of units'
-                    options={{ required: 'A min number must be specified' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='amount.max'
-                    title='Max.:'
-                    placeholder='Enter maximum number of units'
-                    options={{ required: 'A max number must be specified' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='cost'
-                    title='Cost:'
-                    placeholder='How many points does the unit cost?'
-                    options={{ required: 'A Points Cost must be entered' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='hits'
-                    title='Hits:'
-                    placeholder='How many hits can the unit take?'
-                    options={{ required: 'How many hits can the unit take?' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='save'
-                    title='Save:'
-                    placeholder="Enter a number ('+' not necessary)"
-                    options={{ required: 'A Save number must be specified' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='vm'
-                    title='VM:'
-                    placeholder='Victory Medals lost if the unit is eliminated'
-                    options={{ required: 'Enter number of Victory Medals' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='vp'
-                    title='VP:'
-                    placeholder='How many Victory Points is the unit worth?'
-                    options={{ required: 'Enter number of Victory Points' }}
-                />
-                <InputField
-                    element='input'
-                    register={register} errors={errors}
-                    type='text'
-                    name='ammo'
-                    title='Ammo:'
-                    placeholder='How much ammo does the unit have?'
-                    options={{ required: 'The unit must have some ammo' }}
-                />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='max'>Max.:</label>
+                        <Controller
+                            name='amount.max'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'A max number must be specified',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='max' placeholder='# units.' />}
+                        />
+
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='cost'>Cost.:</label>
+                        <Controller
+                            name='cost'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'A Points Cost must be entered',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='cost' placeholder='# Pts.' />}
+                        />
+
+                    </div>
+                </div>
+                <div className="mulitple-errors">
+                    {errors.amount?.min && <p className="error-message">{errors.amount.min.message}</p>}
+                    {errors.amount?.max && <p className="error-message">{errors.amount.max.message}</p>}
+                    {errors.cost && <p className="error-message">{errors.cost.message}</p>}
+                </div>
+                <div className="multiple-inputs">
+                    <div className="input-container">
+                        <label htmlFor='hits'>Hits:</label>
+                        <Controller
+                            name='hits'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'How many hits can the unit take before being eliminated?',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='hits' placeholder='# hits.' />}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='save'>Save:</label>
+                        <Controller
+                            name='save'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'A Save number must be specified',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='save' placeholder='# save' />}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='vm'>VM:</label>
+                        <Controller
+                            name='vm'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'Please enter number of Victory Medals',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='vm' placeholder='# vm' />}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='vp'>VP:</label>
+                        <Controller
+                            name='vp'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'Please enter number of Victory Point',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='vp' placeholder='# vp' />}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor='ammo'>Ammo:</label>
+                        <Controller
+                            name='ammo'
+                            defaultValue=''
+                            control={control}
+                            rules={{
+                                required: 'Please enter number of Victory Point',
+                                valueAsNumber: true
+                            }}
+                            render={({ field }) => <input {...field} type='number' className='input-field' id='ammo' placeholder='# ammo' />}
+                        />
+                    </div>
+                </div>
+                <div className="mulitple-errors">
+                    {errors.hits && <p className="error-message">{errors.hits.message}</p>}
+                    {errors.save && <p className="error-message">{errors.save.message}</p>}
+                    {errors.vm && <p className="error-message">{errors.vm.message}</p>}
+                    {errors.vp && <p className="error-message">{errors.vp.message}</p>}
+                    {errors.ammo && <p className="error-message">{errors.ammo.message}</p>}
+                </div>
                 {isPending && <p>Saving unit...</p>}
                 {updateErr && <p className='error-message'>{updateErr.message}</p>}
                 <Button type='submit' color='submit'>Add unit to Army List</Button>

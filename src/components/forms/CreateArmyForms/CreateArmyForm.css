@@ -16,12 +16,22 @@ form {
   background-color: beige;
 }
 
+.multiple-inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.multiple-errors {
+  flex: 100%;
+}
 /* Input fields */
 .input-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
   gap: 0.25rem;
   margin-bottom: 0.5rem;
+  flex: 0 1 auto;
 
   & label {
     font: var(--input-text);
