@@ -22,7 +22,7 @@ const NameArmy = () => {
         console.log('Submiting title', formValues.title)
         const titleToUrl = formValues.title.toLowerCase().split(' ').join('-')
         const settingToUrl = setting.toLowerCase().split(' ').join('-')
-        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), titleUrl: titleToUrl, setting: setting, settingUrl: settingToUrl }
+        const addedTimeStamp = { ...formValues, createdAt: serverTimestamp(), titleUrl: titleToUrl, setting: setting, settingUrl: settingToUrl, description: { short: '', long: '' } }
         const res = await addDocument(addedTimeStamp)
         navigate(`./${res.id}`)
     }
