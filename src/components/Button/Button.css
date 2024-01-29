@@ -12,6 +12,11 @@
     background-color: var(--green);
   }
 
+  &.red {
+    color: var(--white);
+    background-color: var(--red);
+  }
+
   &[type="submit"] {
     background-color: var(--secondary);
     color: var(--white);

@@ -6,6 +6,8 @@ import { useEffect, useState, useRef } from 'react';
 
 import Button from '../../Button/Button';
 import { arrayUnion } from 'firebase/firestore';
+import xRoundedRed from '../../../assets/svgs/x-rounded-red.svg';
+import addRoundedBlue from '../../../assets/svgs/add-rounded-blue.svg';
 import { reduceRight } from 'lodash';
 
 const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, existingData }) => {
@@ -18,7 +20,7 @@ const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, 
             ]
         }
     });
-    const { fields } = useFieldArray({ control, name: 'choices' })
+    const { fields, remove, append } = useFieldArray({ control, name: 'choices' })
 
     const { isPending, error: updateErr } = response;
 
@@ -105,22 +107,23 @@ const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, 
             {fields.map((field, index) => {
                 // console.log('index: ', index)
                 return (
-                    <div className="input-container text-choice" key={field.id}>
-                        <label htmlFor={`choice${index}`}>#</label>
-                        <input
-                            className='input-field'
-                            id={`choice${index}`}
-                            {...register(`choices.${index}.choice`, {
-                                validate: {
-                                    hasLength: value => value.length > 0 || 'Please enter a choice or delete this input-field.'
-                                }
-                            })}
-                            placeholder={placeholders[index]}
-                        />
+                    <div className="input-container condition-choice" key={field.id}>
+                        <label htmlFor={`choice${index}`}>#
+                            <input
+                                className='input-field'
+                                id={`choice${index}`}
+                                {...register(`choices.${index}.choice`, {
+                                    validate: {
+                                        hasLength: value => value.length > 0 || 'Please enter a choice or delete this input-field.'
+                                    }
+                                })}
+                                placeholder={placeholders[index]}
+                            />
+                            <img className='delete-choice' src={xRoundedRed} alt="delete-button" onClick={() => remove(index)} />
+                        </label>
                         {/* Notice the optional chaining here with array bracket botation!: */}
                         {errors.choices?.[index]?.choice && <p className="error-message">{errors.choices[index].choice.message}</p>}
                     </div>
-
                 )
             })}
             {/* <div className="input-container">
@@ -134,9 +137,9 @@ const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, 
                 />
                 {errors.type && <p className="error-message">{errors.type.message}</p>}
             </div> */}
-            {errors.choices && <p className="error-message">{errors.choices.message}</p>}
             {isPending && <p>Saving condition...</p>}
             {updateErr && <p className='error-message'>{updateErr.message}</p>}
+            <img className='add-choice' src={addRoundedBlue} alt="add-choice-button" onClick={() => append({ choice: '' })} />
             <Button type='submit' color='submit'>Add condition to Army List</Button>
         </form>
     )
