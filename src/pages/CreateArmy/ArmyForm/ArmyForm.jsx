@@ -15,15 +15,23 @@ import AddNewUnitForm from '@/components/forms/CreateArmyForms/AddNewUnitForm'
 import DisplayArmy from '@/components/DisplayArmy/DisplayArmy';
 import DropdownContainer from '../../../components/DropdownContainer/DropdownContainer';
 import { useRTDocument } from '../../../hooks/useRTDocument';
+import AddArmyOptionForm from '../../../components/forms/CreateArmyForms/AddArmyOptionForm';
 
 export default function ArmyForm() {
     // Get the doc with query from url params:
     const { army: armyId } = useParams()
-
-    // ['titleUrl', '==', army]
     const { document: armyList, error } = useRTDocument('armylists', armyId)
-
     const { updateDocument, response } = useFirestore('armylists')
+
+    // Prevents submitting by hitting Enter when input is focused AND lets us make linebreaks in textareas without triggering submits:
+    const stopSubmit = (e) => {
+        if (e.key === 'Enter' && e.target.className === 'input-field') {
+            e.preventDefault()
+        }
+        if (e.key === 'Enter' && e.target.className === 'textarea') {
+            e.stopPropagation()
+        }
+    }
 
     const hasFormDataNotChanged = (formValues) => { // Checks to see if any new data was actually entered. 
         const updatedDataKeys = Object.keys(formValues); // Get the keys for use with reduce func below
@@ -38,6 +46,7 @@ export default function ArmyForm() {
     }
 
     const onSubmit = async (formValues) => {
+        console.log(formValues)
         // Abort update if no data was actually changed (if you click the save button aciidentally fx):
         if (hasFormDataNotChanged(formValues)) {
             console.log('No new values entered - update aborted!')
@@ -51,10 +60,13 @@ export default function ArmyForm() {
     return (
         <Page title={armyList ? armyList.title : 'Getting title...'} actions={['print', 'copy', 'see']} color='dark-purple'>
             <DropdownContainer border='blue' bgColor='ultralight-purple' header='Edit title and description'>
-                <TitleAndDescriptionForm submitAction={onSubmit} response={response} data={armyList} prefill={true} />
+                <TitleAndDescriptionForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} data={armyList} prefill={true} />
+            </DropdownContainer>
+            <DropdownContainer border='blue' bgColor='ultralight-purple' header='Add Army List option'>
+                <AddArmyOptionForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.conditions ? armyList.conditions : null} prefill={true} />
             </DropdownContainer>
             <DropdownContainer border='blue' bgColor='white' header='Add new unit'>
-                <AddNewUnitForm submitAction={onSubmit} response={response} />
+                <AddNewUnitForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.unitList ? armyList.unitList : null} />
             </DropdownContainer>
             <DisplayArmy armyList={armyList} error={error} />
         </Page>

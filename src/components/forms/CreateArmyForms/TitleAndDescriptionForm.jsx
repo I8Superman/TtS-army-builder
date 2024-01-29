@@ -7,21 +7,11 @@ import { useEffect } from 'react';
 
 import Button from '@/components/Button/Button';
 
-const TitleAndDescriptionForm = ({ submitAction, response, data, prefill }) => {
+const TitleAndDescriptionForm = ({ submitAction, stopSubmit, response, data, prefill }) => {
     const { control, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isPending, error: updateErr } = response
 
-    // Prevents submitting by hitting Enter when input is focused AND lets us make linebreaks in textareas without triggering submits:
-    const stopSubmit = (e) => {
-        if (e.key === 'Enter' && e.target.className === 'input-field') {
-            e.preventDefault()
-        }
-        if (e.key === 'Enter' && e.target.className === 'textarea') {
-            e.stopPropagation()
-        }
-    }
-
-    useEffect(() => {
+    useEffect(() => { // Prefill func
         if (data && prefill) { // Object.entries returns an objects properties 
             Object.entries(data).forEach(([fieldName, value]) => {
                 // Check if you want to set the value for a specific field (doesnt work with nested data as )

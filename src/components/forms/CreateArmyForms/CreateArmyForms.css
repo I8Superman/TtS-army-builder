@@ -12,8 +12,9 @@ form {
   color: var(--danger);
 }
 
-.army {
-  background-color: beige;
+.form-info,
+.input-header {
+  margin-bottom: 0.5rem;
 }
 
 .multiple-inputs {
@@ -27,8 +28,6 @@ form {
 /* Input fields */
 .input-container {
   display: flex;
-  flex-wrap: wrap;
-  /* flex-direction: column; */
   gap: 0.25rem;
   margin-bottom: 0.5rem;
   flex: 0 1 auto;
@@ -38,18 +37,63 @@ form {
     color: var(--primary);
   }
 
+  &.text-choice {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    & label {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+  }
+
   .input-field,
   .textarea {
     width: 100%;
     border: none;
     border-radius: 0.75rem;
-    background-color: var(--white);
+    background-color: var(--white-purple);
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     font: var(--input-text);
     color: var(--primary);
     box-shadow: inset 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
 
     &:focus {
+    }
+  }
+
+  .input-radio {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    & input[type="radio"] {
+      appearance: none;
+      margin: 0;
+      font: inherit;
+      color: var(--purple);
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 0.15rem solid var(--purple);
+      border-radius: 10%;
+      background-color: var(--white-purple);
+      display: grid;
+      place-content: center;
+
+      &::before {
+        content: "";
+        background-image: url("@/assets/svgs/check-dark-purple.svg");
+        width: 2rem;
+        height: 2rem;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
     }
   }
 

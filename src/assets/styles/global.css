@@ -37,12 +37,16 @@ p {
   font-family: "EB Garamond", sans-serif;
   font-weight: 400;
   font-size: 1.25rem;
-}
 
-.sm-text {
-  font-family: "EB Garamond", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
+  &.sm {
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  &.dark-purple {
+    color: var(--dark-purple);
+  }
 }
 
 /* Global styles */

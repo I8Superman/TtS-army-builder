@@ -7,9 +7,10 @@ import { useEffect } from 'react';
 import Button from '../../Button/Button';
 import { arrayUnion } from 'firebase/firestore';
 
-const AddNewUnitForm = ({ submitAction, response, data, prefill }) => {
+const AddNewUnitForm = ({ submitAction, stopSubmit, response, data, prefill, existingData }) => {
     const { control, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isPending, error: updateErr } = response
+
 
     // Func to prefill the form with data if needed:
     useEffect(() => {
@@ -18,19 +19,18 @@ const AddNewUnitForm = ({ submitAction, response, data, prefill }) => {
         }
     }, [data, prefill, setValue])
 
+    const checkExistence = (value) => { // Validation for unit.name (avoid duplets)
+        console.log('value: ', value)
+        if (!existingData) return true;
+        if (existingData) { // = if the armyList already has a unitList with at least 1 unit
+            return existingData.some(unit => unit.name === value) ? false : true;
+        }
+    }
+
     const onSubmit = (formValues) => {
         // arrayUnion() is a Firestore method that atomically adds an element to an arr data value
         // Here we add the unit to the existing arr of units in the unitList property
         submitAction({ unitList: arrayUnion(formValues) })
-    }
-
-    const stopSubmit = (e) => {
-        if (e.key === 'Enter') { e.preventDefault() }
-        // if (e.key === 'Enter' && e.target.className === 'input-field') {
-        //     e.preventDefault()
-        // } else if (e.key === 'Enter' && e.target.className === 'textarea') {
-        //     e.stopPropagation()
-        // } else { e.preventDefault() }
     }
 
     return (
@@ -41,7 +41,12 @@ const AddNewUnitForm = ({ submitAction, response, data, prefill }) => {
                     name='name'
                     defaultValue=''
                     control={control}
-                    rules={{ required: 'A unit must be given a name' }}
+                    rules={{
+                        required: 'A unit must be given a name',
+                        validate: { // The value of the field is automatically passed to any validate func:
+                            unitAlreadyExists: value => checkExistence(value) || 'A unit with this name already exists. Edit that unit instead.'
+                        }
+                    }}
                     render={({ field }) => <input {...field} className='input-field' id='name' placeholder='Give your unit a name.' />}
                 />
                 {errors.name && <p className="error-message">{errors.name.message}</p>}
