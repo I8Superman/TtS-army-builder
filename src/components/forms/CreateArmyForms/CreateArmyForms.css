@@ -89,7 +89,7 @@ form {
       height: 1.5rem;
       border: 0.15rem solid var(--purple);
       border-radius: 10%;
-      background-color: var(--white-purple);
+      background-color: var(--white);
       display: grid;
       place-content: center;
 
@@ -122,8 +122,13 @@ form {
 }
 
 .add-choice {
-  height: 2.125rem;
   align-self: flex-end;
+  display: contents;
+
+  .btn-img {
+    margin-left: auto;
+    height: 2.125rem;
+  }
 }
 
 .error-message {

@@ -16,6 +16,7 @@ import DisplayArmy from '@/components/DisplayArmy/DisplayArmy';
 import DropdownContainer from '../../../components/DropdownContainer/DropdownContainer';
 import { useRTDocument } from '../../../hooks/useRTDocument';
 import AddArmyOptionForm from '../../../components/forms/CreateArmyForms/AddArmyOptionForm';
+import AddUpgradeUnitForm from '../../../components/forms/CreateArmyForms/AddUpgradeUnitForm';
 
 export default function ArmyForm() {
     // Get the doc with query from url params:
@@ -66,7 +67,11 @@ export default function ArmyForm() {
                 <AddArmyOptionForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.conditions ? armyList.conditions : null} prefill={true} />
             </DropdownContainer>
             <DropdownContainer border='blue' bgColor='white' header='Add new unit'>
-                <AddNewUnitForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.unitList ? armyList.unitList : null} />
+                <AddNewUnitForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.unitList ? armyList.unitList : null} >
+                    <DropdownContainer border='blue' bgColor='white' header='Add upgrade/downgrade option'>
+                        <AddUpgradeUnitForm submitAction={onSubmit} stopSubmit={stopSubmit} response={response} existingData={armyList?.unitList ? armyList.unitList : null} />
+                    </DropdownContainer>
+                </AddNewUnitForm>
             </DropdownContainer>
             <DisplayArmy armyList={armyList} error={error} />
         </Page>

@@ -20,6 +20,7 @@ const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, 
             ]
         }
     });
+
     const { fields, remove, append } = useFieldArray({ control, name: 'choices' })
 
     const { isPending, error: updateErr } = response;
@@ -126,20 +127,12 @@ const AddArmyOptionForm = ({ submitAction, stopSubmit, response, data, prefill, 
                     </div>
                 )
             })}
-            {/* <div className="input-container">
-                <label htmlFor='type'>Type:</label>
-                <Controller
-                    name='type'
-                    defaultValue=''
-                    control={control}
-                    rules={{ required: 'What type of unit are you adding?' }}
-                    render={({ field }) => <input {...field} className='input-field' id='type' placeholder='Auxilliary, Light, Cavalry etc.' />}
-                />
-                {errors.type && <p className="error-message">{errors.type.message}</p>}
-            </div> */}
             {isPending && <p>Saving condition...</p>}
             {updateErr && <p className='error-message'>{updateErr.message}</p>}
-            <img className='add-choice' src={addRoundedBlue} alt="add-choice-button" onClick={() => append({ choice: '' })} />
+            <button type='button' className='add-choice' onClick={() => append({ choice: '' })}>
+                <img className='btn-img' src={addRoundedBlue} alt="add-choice-button" />
+            </button>
+
             <Button type='submit' color='submit'>Add condition to Army List</Button>
         </form>
     )
